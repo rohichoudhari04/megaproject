@@ -1,0 +1,13 @@
+{%extends '7thsem/assignment/assignment.html'%}
+{%load crispy_forms_tags %}
+{%block content %}
+<h2>Upload Assignment</h2>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form|crispy}}
+    
+            <button class="btn btn-primary btn-sm" type="submit">Upload</button>
+            </form>
+
+
+{%endblock%}

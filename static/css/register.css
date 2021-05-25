@@ -1,0 +1,44 @@
+body{ background-image: linear-gradient(to bottom, #320d33, #521d53, #742f74, #974198, #bd54bd);;}
+.text{
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color:rgb(46, 12, 46);
+    font-weight: 900;
+}
+
+#model{
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.line{width: 100%;
+height:6px;
+margin-top: 0px;
+background-color: #30336b;}
+.form-group{
+    color: #3a1d49;
+    font-weight: 600;
+  }
+  
+  .btn{  background-color: #b43fee;
+    border: none;
+    color: white;
+    text-align: center;}
+
+    .btn:hover{color:#320d33;
+    background-color: white;
+border:2px solid #320d33}
+
+input[type=text], input[type=password], input[type=email] {
+    border:none;
+    border-radius: 0;
+    border-bottom: 1px solid rgb(121, 120, 120);
+}
+
+input[type=text]:focus {
+    background-color: #fff;
+    outline:none;
+    border: none;
+    border-bottom: 2px solid black;
+}

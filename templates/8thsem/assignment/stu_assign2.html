@@ -1,0 +1,46 @@
+{% extends '8thsem/assignment/assignment2.html'%}
+{%block content%}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sr_no.</th>
+                <th>Student name</th>
+                <th>Roll no</th>
+                <th>title</th>
+                <th>Document</th>
+                <th>Submitted on</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            {% if sta %}
+            {% for s in sta%}
+            
+            <tr>
+                <td>{{forloop.counter}} </td>
+                <td>{%if s %} {{s.name}} {% else %} <td>No data available</td> {% endif %}</td>
+                <td>{{s.Roll_no}}</td>
+                <td>{{s.title}}</td>
+                <td>
+                    <a href="{{s.pdf.url}}">Document</a>
+                </td>
+                <td>{{s.date}}</td>
+                
+            </tr>
+            
+          
+            {% endfor %}
+            {% else %}
+            <h3 class="alert alert-warning">No assignment submitted</h3>
+            {% endif %}
+        </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+
+{%endblock%}
+
+
+   

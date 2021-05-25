@@ -1,0 +1,146 @@
+{% load static %}
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/basic.css/' %}" />
+    <!----Google-Fonts---->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      #hero_container {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url('.././static/images/bg2.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 8rem;
+        font-family: 'Poppins', sans-serif;
+        border-bottom: 10px solid #535c68;
+        opacity: 0.8;
+        height: calc(100vh - 30px);
+      }
+     
+    </style>
+  </head>
+  <body>
+    <!---------Hero container----------->
+    <div class="container-fluid" id="hero_container">
+      <div class="hero_content">
+        <h2 class="hero_heading">Digital Learning</h2>
+        <br />
+        <p class="hero_para">
+          “You can’t teach people everything they need to know. The best you can
+          do is position them where they can find what they need to know when
+          they need to know it.”
+          <br />
+          ~ Seymour Papert
+        </p>
+
+        <a
+          href=""
+          type="button"
+          class="btn"
+        >
+          Get started
+        </a>
+      </div>
+    </div>
+    
+  <!----------------------Service cards container ------------>
+  <div id="services" >
+    <div id="servicecard" class="container">
+      <img width="60px" class="m-t" src="{% static 'images/service_icon.gif' %}"/>
+      <h1 class="services">SERVICES</h1>
+      
+      <div class="row">
+        <div class="col-sm">
+          <div class="card">
+            <img
+              src="{% static 'images/laptop.svg' %}"
+              class="card-img-top"
+              alt=""
+            />
+            <div class="card-body">
+              <h5 class="card-title">Video conferencing</h5>
+              <p class="card-text">Student-teacher interaction</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card">
+            <img
+              src="{% static 'images/post-it.svg ' %}"
+              class="card-img-top"
+              alt=""
+            />
+            <div class="card-body">
+              <h5 class="card-title">Notes and Assignment</h5>
+              <p class="card-text">Get the course content here</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card">
+            <img
+              src="{% static 'images/friends.svg' %}"
+              class="card-img-top"
+              alt=""
+            />
+            <div class="card-body">
+              <h5 class="card-title">User friendly</h5>
+              <p class="card-text">Easy access of features</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card">
+            <img
+              src="{% static 'images/video.svg' %}"
+              class="card-img-top"
+              alt=""
+            />
+            <div class="card-body">
+              <h5 class="card-title">Video lectures</h5>
+              <p class="card-text">Fet the video content here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+       <!-------About Section-------->
+     <div>
+       <section class="about">
+        <div id="about"  class="container">
+          <img width="70px" class="m-t" src="{% static 'images/about-us.gif' %}"/>
+          <h2 class="mb-2 mt-0 text-black-50">ABOUT US</h2>
+          
+          <div class="about-wrapper mt-sm-4">
+            <div class="about-image mt-2">
+              <img src=".././static/images/videocall.jpg" alt="about-image" />
+            </div>
+            <div class="about-content">
+              <h2>RELIABLE AND FLEXIBLE Video Conferencing.
+              </h2>
+              <div class="line2"></div>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy text
+                ever since the 1500s, when an unknown printer took a galley of
+                type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged.
+              </p>
+              </div>
+              </div>
+              </div>
+              </section>
+            </div>
+  
+  </body>
+</html>

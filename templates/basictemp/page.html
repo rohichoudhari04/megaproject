@@ -1,0 +1,41 @@
+{%extends 'basictemp/basic.html' %}
+{%load static%}
+
+<body>
+
+{%block content%}
+<div id="courses_container">
+<div  class="col-sm-10" style="margin-left:16%;">
+  <h2 style="color:rgb(116, 113, 113);
+  font-family: 'Poppins', sans-serif;
+  letter-spacing:0.5rem;"
+  class="text-center mt-2 p-3"><img width="50px" src="{% static 'images/book.gif' %}" alt="" /><br />COURSES</h2>
+</div>
+<div id="course_card" style="padding-left:16%;" class="row text-center">
+
+<hr />
+    <div style="width:360px;margin-left:10%;" class="col-sm-6 mt-4 mb-5">
+      <div style="height: 300px;" class="card alert alert-primary">
+        <img src="{%static 'images/notepad.png' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">7th sem</h5>
+          <p class="card-text">Get the content here</p>
+          <a href="{%url 'video'%}" name="seven" class="btn btn-primary">view</a>
+        </div>
+      </div>
+    </div>
+    <div style="width:360px;margin-left:10%;" class="col-sm-6 mt-4 mb-5">
+      <div style="height: 300px;" class="card alert alert-primary">
+        <img src="{%static 'images/notepad.png' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">8th sem</h5>
+          <p class="card-text">Get the content here</p>
+          <a href="{%url 'video2'%}" name="eight" class="btn btn-primary">view</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endblock%}
+</body>

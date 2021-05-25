@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on mysite
+From: webmaster@localhost
+To: rohifairytale@gmail.com
+Date: Tue, 16 Mar 2021 17:23:27 -0000
+Message-ID: <161591540733.10112.14271588136965912617@DESKTOP-FK06RJT>
+
+
+You're receiving this email because you requested a password reset for your user account at mysite.
+
+Please go to the following page and choose a new password:
+
+http://localhost:8000/%2Flogin/pwd/passwordconfirm/Mg/ajmkx3-abaac0ed7501d6b0d7da40d69592af46/
+
+Your username, in case you’ve forgotten: Rohi
+
+Thanks for using our site!
+
+The mysite team
+
+
+
+-------------------------------------------------------------------------------

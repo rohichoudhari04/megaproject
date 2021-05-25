@@ -1,0 +1,175 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap"
+      rel="stylesheet"
+    />
+     <!-----------bootstrap------------>
+    
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+     
+    <style>
+        body{ height:800px;
+        width: 100%;
+        overflow-x: hidden;
+        background-image: linear-gradient(to bottom, #320d33, #521d53, #742f74, #974198, #bd54bd);
+        color: white;
+        text-align: center;
+        }
+        #jitsi-meet{width: 100%;
+            height: 700;
+            }
+ 
+    #dg{
+      text-align: center; 
+     display: flex; 
+     flex-direction: row;   
+     justify-content: center; 
+      font-size:1.5rem;
+      font-weight: 600;
+      color:white;
+      letter-spacing:2px;
+      font-family: 'Poppins', sans-serif;
+  }
+  .btn{ color:white;
+    border:2px solid white;
+    padding: 10px 60px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.5s all;}
+    .btn:hover{
+      background-color:#686de0;
+      border:0;
+      }
+      .active{
+        display: flex; 
+        flex-direction: row;
+        align-items: flex-end;   
+        color: white; 
+        list-style-type: none;
+      }
+      .active:hover{color: violet;}
+    </style>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+   <script src="https://meet.jit.si/external_api.js" allow="camera;microphone"></script>
+   
+   
+</head>
+<body> 
+<!-- <h5 class="text-center">Better quality and communication leads to better education</h5>
+<h6 class="text-center">Experience with Jitsi Meet</h6> -->
+
+<a class="active ml-3 mt-2 text-decoration-none" 
+style="font-size:16px;letter-spacing:1px;" 
+href="{%url 'basic'%}"> BACK<br/></a>
+<!-- <h3 class="ml-2" id="dg">DigiLearn</h3> -->
+{%if user.avatar %}
+                <img src="{{user.avatar.url}}" aria-label="profile_pic" alt="pic" class="rounded-circle" width="50">
+                {% else %}
+                <img  src="{% static 'images/user.png' %}" alt="pic" class="rounded-circle" width="50">
+                {% endif %}{{user.first_name}} {{user.last_name}}</p>
+<button id="start" class="btn btn-sm p-2 mb-1 mt-0 text-white">Enter meeting Room</button>
+
+
+<div class="mb-3" id="jitsi-meet">
+  
+</div>
+
+
+<script>
+ 
+var button = document.querySelector('#start');
+var container = document.querySelector('#jitsi-meet');
+var api = null;
+
+button.addEventListener('click', () => 
+{
+    var domain = "meet.jit.si";
+    var options = {
+        "roomName": "",
+        "parentNode":container,
+        "width": 1200,
+        "height": 680,
+       
+        "configOverwrite": {
+          doNotStoreRoom: true,
+          startWithAudioMuted: true, 
+          localRecording: {
+            enabled: true,
+          },
+          disableProfile: false,
+          disableShortcuts: false,
+        
+        toolbarButtons: [
+       'microphone', 'camera', 'closedcaptions', 'desktop', 'fullscreen',
+       'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
+       'livestreaming', 'etherpad', 'sharedvideo', 'shareaudio', 'settings', 'raisehand',
+       'videoquality', 'filmstrip', 'invite', 'stats',
+       'tileview', 'select-background', 'download', 'help', 'security'
+    ],
+    remoteVideoMenu: {
+      disableKick: true,
+      disableMuteEveryone:true,
+      disableRemoteMute: false,
+      disableMuteVideoEveryone:true,
+      disableFeedback:true,
+  },
+    prejoinPageEnabled: true,
+    enableCalendarIntegration: true,
+    enableClosePage: false,
+    enableWelcomePage: true,
+    requireDisplayName: true,
+        },
+    "interfaceConfigOverwrite": { 
+      DISABLE_JOIN_LEAVE_NOTIFICATIONS: false,
+      SETTINGS_SECTIONS: [ 'devices', 'language', 'moderator', 'calendar' ],
+      filmStripOnly: true ,
+    DISABLE_DOMINANT_SPEAKER_INDICATOR: false,
+    APP_NAME: 'MyWEbApp',
+    GENERATE_ROOMNAMES_ON_WELCOME_PAGE: false,
+    HIDE_DEEP_LINKING_LOGO: false,
+    MOBILE_APP_PROMO: false,
+    POLICY_LOGO: null,
+    PROVIDER_NAME: 'Digi',
+    SHOW_BRAND_WATERMARK: false,
+    BRAND_WATERMARK_LINK: false,
+    SHOW_CHROME_EXTENSION_BANNER: false,
+    VIDEO_LAYOUT_FIT: 'both',
+    SHOW_DEEP_LINKING_IMAGE: false,
+    SHOW_JITSI_WATERMARK: false,
+    SHOW_POWERED_BY: false,
+    RECENT_LIST_ENABLED: false,
+    SHOW_PROMOTIONAL_CLOSE_PAGE: true,
+    DISPLAY_WELCOME_PAGE_CONTENT: false,
+    DISPLAY_WELCOME_PAGE_ADDITIONAL_CARD: false,
+    DISPLAY_WELCOME_PAGE_TOOLBAR_ADDITIONAL_CONTENT: true,
+    DISPLAY_WELCOME_FOOTER: false,
+    DEFAULT_LOCAL_DISPLAY_NAME: 'me',
+    DEFAULT_LOGO_URL: 'images/book.png',
+    CLOSE_PAGE_GUEST_HINT: true, 
+    DEFAULT_WELCOME_PAGE_LOGO_URL: 'images/book.png', 
+    DISABLE_JOIN_LEAVE_NOTIFICATIONS: false, 
+    DEFAULT_REMOTE_DISPLAY_NAME: 'Fellow Jitster',},
+    
+    };
+    api = new JitsiMeetExternalAPI(domain, options);
+ 
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{% extends '7thsem/subjects.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+    {%block Syllabus%}
+    <div style="padding-left:16%;">
+        <div class="col-sm-12">
+            <div style="display: flex;" class="alert alert-primary">
+                <h2><b>Syllabus</b></h2>
+                
+                <nav style="padding-left:60%" aria-label="breadcrumb">
+                    <ol style="background-color:transparent"  class="breadcrumb ml-3 mb-0">
+                      <li class="breadcrumb-item"><a href="">7th sem</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">syllabi</li>
+                    </ol>
+                  </nav>
+                
+                </div> 
+        {%if user.is_teacher%}
+        <p>
+        <a href="{% url 'syllabipdf' %}" class="btn btn-outline-primary">upload </a>
+        </p>
+        {% endif %}
+
+        {%block syllabi %}
+
+        {% endblock %}
+     {% if pdf %}   
+    {% for p in pdf %}
+    <div class="col-md-12">
+
+        <ul class="list-group">
+          
+            <li class="list-group-item list-group-item-danger"><b>{{p.subject_name}}</b>
+                <a  class="mr-4 float-end" href="{{p.add_pdf.url}}" target="_blank">view</a></li>
+        {% if user.is_teacher %}    
+        <p>
+            <form action="{% url 'delete_pdf' p.pk %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm ml-2 mt-2"><i class="fas fa-trash-alt"></i></button>
+            </form>
+        </p>
+    
+        {% endif %}
+          </ul>
+          </div>
+       
+        {% endfor %}
+        {% else %}
+        <h3 class="alert alert-warning">No syllabus added</h3>
+        {% endif %}
+        </div>
+        
+    </div>
+</div>
+    {%endblock%}
+  
+</body>
+</html>

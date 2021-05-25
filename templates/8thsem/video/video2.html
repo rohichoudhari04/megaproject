@@ -1,0 +1,82 @@
+{%extends '8thsem/subjects2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{%block video2%}
+
+    <div class="container-fluid">
+        <div style="padding-left:16%;" class="row">
+          <div class="col-sm-12">
+            <div class="content-section">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{message}}
+                </div>
+                {% endfor %}
+               {% endif %}
+            </div>
+            <div style="display: flex;" class="alert alert-primary">
+                <h2><i class="far fa-play-circle fa-lg mr-2"></i><b>Video lectures</b></h2> 
+                <nav style="padding-left:40%" aria-label="breadcrumb">
+                    <ol style="background-color:transparent"  class="breadcrumb ml-3 mb-0">
+                      <li class="breadcrumb-item"><a href="">8th sem</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">video</li>
+                    </ol>
+                  </nav>   
+            </div>
+  
+                
+{%if user.is_teacher %}
+<p>
+   <a href="{%url 'upload_video2'%}" class="btn btn-outline-primary">Add Video</a>
+ </p>
+
+ {% endif %}
+
+ <div class="row align-items-center">
+
+<!-------video rendering------->
+    {% if video %}
+    {% for v in video %}
+    <div  class="col-sm-4 px-4">
+    <h3 id="caption"class="text-center mt-4 mb-2 list-group-item-secondary">
+    <b> {{v.subject_name}}</b>
+    </h3>
+    <video class="embed-responsive embed-responsive-16by9" controls="controls">
+        <source class="embed-responsive-item" src="{{v.video.url}}" type="video/mp4" />
+    </video>
+    <p style="color:teal"><u><b>{{v.caption}}</b></u> [{{v.date}}]</p>
+
+    <div class="section" style="display:inline-flex;">
+    {%if user.is_student %}
+    <!-------- download button ---------->
+    <a href="{{v.video2.url}}" class="btn btn-primary btn-sm py-2 mt-2" target="_blank"><i class="fas fa-download"></i></a>
+    {%else%}
+    <a href="{{v.video2.url}}" class="btn btn-primary btn-sm py-2 mt-2" target="_blank"><i class="fas fa-download"></i></a>
+
+    <!----- delete content ------>
+    <form action="{%url 'delete_video' v.pk %}" method="POST" enctype="multipart/form-data">
+        {%csrf_token %}
+        <button type="submit" class="btn btn-danger btn-sm mt-2 ml-2 py-2 px-3"><i class="fas fa-trash-alt"></i></button>
+    </form>
+    {% endif %}
+
+</div>
+</div>
+{% endfor %}
+{%else%}
+<h3 class="alert alert-warning">No video added</h3>
+{% endif %}
+</div> 
+
+
+<!----------content to show------------>
+   {% block content %}
+    {% endblock %}
+
+</div>
+</div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,12 @@
+{% extends '8thsem/syllabi/syllabi2.html' %}
+{% load crispy_forms_tags %}
+{%block syllabi %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+
+<button class="btn btn-primary btn-sm" type="submit">submit</button>
+</form>
+
+{%endblock %}

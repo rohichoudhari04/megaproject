@@ -1,0 +1,91 @@
+{%extends '7thsem/notes/notes.html'%}
+
+{%block content%}
+
+<div class="content-section">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{message}}
+    </div>
+    {% endfor %}
+   {% endif %}
+   
+</div>
+
+{%if user.is_teacher %}
+<p>
+    <a href="{%url 'upload_notes'%}" class="btn btn-outline-primary">Upload Notes</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sr_no.</th>
+            <th>Subject Name</th>
+            <th>Unit</th>
+            <th>Topic</th>
+            <th>Date</th>
+            <th>Download</th>
+            <th>Delete</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {%if notes%}
+        {% for note in notes %}
+        <tr>
+            <td>{{forloop.counter}} </td>
+            <td style="color:tomato;"><b>{{note.subject_name}}</b></td>
+            <td>{{note.unit}}</td>
+            <td>{{note.topic}}</td>
+            <td>{{note.date}}</td>
+            <td>
+                <a href="{{note.pdf.url}}" class="btn btn-primary btn-sm ml-2 px-2" target="_blank"><i class="fas fa-download"></i></a>
+                </td>
+            <td>
+                <form action="{%url 'delete_notes' note.pk %}" method="POST">
+                    {%csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        {%else%}
+        <h3 class="alert alert-warning">No notes added</h3>
+        {% endif %}
+    </tbody>
+    </table>
+    
+{% else %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sr_no.</th>
+            <th>Subject Name</th>
+            <th>Unit</th>
+            <th>Topic</th>
+            <th>Date</th>
+            <th>Download</th>
+        </tr>
+    </thead>
+
+<tbody>
+    {% for note in notes %}
+        <tr>
+            <td>{{forloop.counter}} </td>
+            <td style="color:tomato;"><b>{{note.subject_name}}</b></td>
+            <td>{{note.unit}}</td>
+            <td>{{note.topic}}</td>
+            <td>{{note.date}}</td>
+            
+    <td>
+    <a href="{{note.pdf.url}}" class="btn btn-primary btn-sm" target="_blank">Download PDF</a>
+    </td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+{% endif %}
+
+
+{%endblock%}

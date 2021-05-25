@@ -1,0 +1,123 @@
+body{
+  overflow-x: hidden;
+}
+.sr{
+  text-shadow: 2px 5px 7px #555454ea;
+  padding:6px; 
+  background-color: wheat;
+  color:darkslategrey;
+  font-weight: 800;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif';
+  }
+  .logo{
+    width: 40px;  
+}
+
+.special-img
+{
+  width: 40px;  
+  position: relative;
+  top: -4px;
+  float: left;
+  left: -8px;
+}
+#container-fluid{
+  background-color: rgba(0, 143, 255,0.8);
+  padding-top: 8rem;
+  font-family: 'Crimson Text', serif;
+  height: 400px;
+  font-size: 19px;
+}
+
+.heading{
+  font-size: 54px;
+  color:black;
+  letter-spacing:1px;
+  font-family: 'Hachi Maru Pop', cursive;
+}
+#name{
+padding-top:8px;
+font-size:18px;
+font-family: 'Work Sans', sans-serif;
+color: white;
+text-decoration: none;
+}
+.row{
+  padding:2px;
+}
+.servicecard{
+  background-color:lightgoldenrodyellow;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card{
+  
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card-img-top{
+  width:170px;
+  padding-left:3em;
+  margin-left:1em;
+}
+.col-sm{
+  margin: 5px;
+}
+.services{
+  padding-top: 20px; 
+  color:darkgrey;
+}
+.card img{
+  width:150px;
+  padding-left:1em ;
+  margin: auto;
+}
+.card-title{
+  font-family: 'Josefin Sans', sans-serif;
+}
+.btn{font-family: 'Lexend Mega', sans-serif;}
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color:rgba(0,0,0,0.8);
+    position: fixed;
+    height: 100%;
+    overflow:auto;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: #f1f1f1;
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+    background-color:lightgray;
+    color: white;
+
+  }
+   a:hover{
+    cursor: pointer;
+  }
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  @media screen and (max-width: 768px) {
+ 
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+   
+  }
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+   
+  }

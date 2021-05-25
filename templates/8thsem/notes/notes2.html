@@ -1,0 +1,23 @@
+{%extends '8thsem/subjects2.html'%}
+{%load static %}
+{%block notes2 %}
+
+  
+    <div class="container-fluid ">
+        <div style="padding-left:16%;"class="row">
+          <div class="col-sm-12">
+            <div style="display: flex;" class="alert alert-primary">
+              <h2><i class="fas fa-file mr-2"></i><b>Notes</b></h2>
+              <nav style="padding-left:40%" aria-label="breadcrumb">
+                  <ol style="background-color:transparent"  class="breadcrumb ml-3 mb-0">
+                    <li class="breadcrumb-item"><a href="">8th sem</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">notes</li>
+                  </ol>
+                </nav>   
+          </div>
+             {%block content %}
+
+             {%endblock%}
+          </div>
+
+{%endblock%}

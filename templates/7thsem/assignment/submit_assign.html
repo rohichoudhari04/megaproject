@@ -1,0 +1,95 @@
+{%extends '7thsem/assignment/assignment.html'%}
+
+{%block content%}
+
+{% if user.is_teacher %}
+<p style="display: inline-flex;">
+    <a href="{%url 'upload_assign' %}" class="btn btn-outline-primary btn-sm ml-2">
+        Upload Assignment Question</a>
+
+    <a href="{%url 'studentlist' %}" class="btn btn-outline-primary btn-sm ml-2">Name of student who submitted</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sr_no.</th>
+            <th>Subject Name</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Document</th>
+            <th>Posted on</th>
+            <th>Due Date</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in assign %}
+        <tr>
+            <td>{{forloop.counter}} </td>
+            <td style="color:tomato;"><b>{{a.subject_name}}</b></td>
+            <td>{{a.title}}</td>
+            <td>{{a.desc}}</td>
+            <td>
+            {%if a.image %}
+            <img src="{{ a.image.url}}" style="width: 100px;" alt="{{a.title}}"><br>
+            <a href="{{ a.image.url}}" class="btn btn-primary btn-sm mt-1" target="_blank"><i class="fas fa-download"></i></a>
+            {% endif %}
+            </td>
+            <td>{{a.date_posted}}</td>
+            <td>{{a.last_date}}</td>
+            <td>
+                <form action="{%url 'delete_assign' a.pk %}" method="POST">
+                    {%csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                </form>
+                
+            </td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% else %}
+
+<p>
+    <a href="{%url 'student_assign' %}" class="btn btn-outline-primary ">
+        Submit Assignment</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sr_no.</th>
+            <th>Subject Name</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Document</th>
+            <th>Posted on</th>
+            <th>Due Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in assign %}
+        <tr>
+            <td>{{forloop.counter}} </td>
+            <td style="color:tomato;"><b>{{a.subject_name}}</b></td>
+            <td>{{a.title}}</td>
+            <td>{{a.desc}}</td>
+            <td>
+                {%if a.image %}
+            <img src="{{ a.image.url}}" style="width: 100px;" alt="{{a.title}}"><br>
+            <a href="{{ a.image.url}}" class="btn btn-primary btn-sm mt-1" target="_blank">Download</a>
+            {% endif %}
+            </td>
+            <td>{{a.date_posted}}</td>
+            <td>{{a.last_date}}</td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endif %}
+
+{%endblock%}

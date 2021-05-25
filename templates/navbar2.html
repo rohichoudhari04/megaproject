@@ -1,0 +1,70 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic_Navbar</title>
+    <link rel="stylesheet" href="{% static 'css/basic.css/' %}">
+    <style>
+      #name:hover {
+        color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <!-----------------NAVBAR SECTION--------------->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-lg-top">
+      <a class="navbar-brand" href="#"
+        ><img
+          class="special-img img-circle"
+          src="{% static 'images/user.png' %}"
+          alt="Logo"
+        />
+        <h4 id="name">Hello {{request.user.username}}</h4>
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto"></ul>
+
+        <a
+          class="btn btn-outline-warning btn-sm px-3 ml-2 mx-2"
+          href="{%url 'logout'%}"
+          role="button"
+          >Logout</a
+        >
+
+        <form
+          style="display: inline-flex"
+          action="{% url 'search' %} "
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <input
+            style="width: 300px"
+            class="form-control p-1 my-2 mr-2"
+            type="text"
+            name="search"
+            placeholder="Search people here.."
+          />
+          <button class="btn btn-outline-light my-2 " type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+  </body>
+</html>
